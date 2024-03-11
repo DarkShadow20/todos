@@ -16,13 +16,14 @@ app.post("/todo",async function(req,res){
         })
         return;
     }
-    await todo.create({
+    const newTodo = await todo.create({
         title:createPayload.title,
         description:createPayload.description,
         completed:false
     })
     res.json({
-        msg:"Todo Created"
+        msg:"Todo Created",
+        newTodo
     })
 
 })

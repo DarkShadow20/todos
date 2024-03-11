@@ -20,6 +20,9 @@ function App() {
         <div>
           <FetchTodo todos={todos}></FetchTodo>
         </div>
+        <div>
+          
+        </div>
       </div>
     </>
   )

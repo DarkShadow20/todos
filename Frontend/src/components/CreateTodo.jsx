@@ -25,8 +25,8 @@ export default function CreateTodo({setTodos}){
                     })
                 }).then(async function(res){
                     const json = await res.json()
-                    alert("Todo added")
                     setTodos((prev)=>[...prev,json.newTodo])
+                    alert("Todo added")
                 })
             }}>Create Todo</button>
         </div>

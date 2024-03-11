@@ -2,11 +2,17 @@
 
 export default function CompletedTodo({todos}){
     console.log(todos)
+    let counter = 0;
+    for(let i = 0;i<todos.length;i++){
+        if(!todos[i].completed){
+            counter = counter + 1
+        }
+    }
     return(
         <div className="p-2">
             <p className="text-xl font-bold	">Completed Todos</p>
-            {todos.map((item)=>(
-                item.completed ? (<div key={item._id}>
+            {todos.length == counter ? "No todo completed":todos.map((item)=>(
+                (<div key={item._id}>
                     <div>
                         {item.title}
                     </div>
@@ -16,7 +22,7 @@ export default function CompletedTodo({todos}){
                     <div className=" p-2 ">
                         <hr className="border-black"></hr>
                     </div>
-                </div>):"No Todo is Completed"
+                </div>)
             ))}
         </div>
     )

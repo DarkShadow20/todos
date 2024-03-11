@@ -1,11 +1,18 @@
 
 
-export default function FetchTodo ({todos}){
+export default function FetchTodo ({todos,setCompletedTodos}){
+    let counter = 0;
+    for(let i = 0;i<todos.length;i++){
+        if(todos[i].completed){
+            counter = counter + 1
+        }
+    }
+    console.log(counter == todos.length)
     return <div className="p-2">
         <p className="font-bold text-xl">To be Completed</p>
-            {(todos.length == 0 ? "No todos to display":todos.map(function(todo){
+            {((todos.length == 0 || counter == todos.length) ? "No todos to display":todos.map(function(todo){
                 return(
-                <div>
+                todo.completed ? "" :<div>
                     <div key={todo._id }>
                         <div className="h1">
                             <h1> {todo.title} </h1>
@@ -25,7 +32,7 @@ export default function FetchTodo ({todos}){
                                 })
                             }).then(async function(res){
                                 const json = await res.json();
-                                console.log(json)
+                                setCompletedTodos((prev)=>[...prev,json.data])
                             })
                         }}>
                             Mark As Done

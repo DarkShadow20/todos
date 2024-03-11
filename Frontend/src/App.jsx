@@ -6,10 +6,12 @@ import FetchTodo from './components/FetchTodo'
 
 function App() {
   const [todos, setTodos] = useState([])
+  const [completedTodos,setCompletedTodos] = useState([])
   useEffect(()=>{
       fetch("http://localhost:3000/todos").then(async function(res){
           const todo = await res.json();
           setTodos(todo.todos)
+          setCompletedTodos(todo.todos)
       })
   },[]) 
   return (
@@ -19,10 +21,10 @@ function App() {
           <CreateTodo setTodos={setTodos}></CreateTodo>
         </div>
         <div>
-          <FetchTodo todos={todos}></FetchTodo>
+          <FetchTodo todos={todos} setCompletedTodos={setCompletedTodos}></FetchTodo>
         </div>
         <div>
-          <CompletedTodo todos={todos}></CompletedTodo>
+          <CompletedTodo todos={completedTodos} ></CompletedTodo>
         </div>
       </div>
     </>

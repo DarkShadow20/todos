@@ -37,7 +37,6 @@ app.get("/todos",async function(req,res){
 
 app.put("/completed",async function(req,res){
     const updatePayload = req.body;
-    console.log(req.body.id)
     const parsedPayload = updateTodo.safeParse(updatePayload);
     if(!parsedPayload.success){
         res.status(411).json({
@@ -45,13 +44,14 @@ app.put("/completed",async function(req,res){
         })
         return;
     }
-    await todo.findByIdAndUpdate({
+    const id =await todo.findByIdAndUpdate({
         _id:req.body.id
     },{
             completed:true
     })
     res.json({
-        msg:"Todo marked as completed"
+        msg:"Todo marked as completed",
+        data:id
     })
 })
 

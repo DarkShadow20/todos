@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
 
-export default function FetchTodo (){
-    console.log(1)
-    const [todos, setTodos] = useState([])
-    useEffect(()=>{
-        fetch("http://localhost:3000/todos").then(async function(res){
-            const todo = await res.json();
-            setTodos(todo.todos)
-        })
-    },[]) 
+
+export default function FetchTodo ({todos}){
     return <div className="p-2">
-            {todos.length == 0 ? "No todos to display":todos.map(function(todo){
+            {(todos.length == 0 ? "No todos to display":todos.map(function(todo){
                 return(
-                    <div>
-                        <div>
-                            Title: {todo.title}
+                    <div key={todo._id || todo.id}>
+                        <div className="h1">
+                            <h1> {todo.title} </h1>
                         </div>
                         <div>
                             Description: {todo.description}
@@ -27,6 +19,6 @@ export default function FetchTodo (){
                         </div>
                     </div>
                 )
-            })}
+            }))}
         </div>
 }

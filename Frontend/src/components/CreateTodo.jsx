@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-export default function CreateTodo(){
+export default function CreateTodo({setTodos}){
     const [title,setTitle] = useState("")
     const [description,setDescription] = useState("")
     return<>
@@ -26,6 +26,7 @@ export default function CreateTodo(){
                 }).then(async function(res){
                     const json = await res.json()
                     alert("Todo added")
+                    setTodos((prev)=>[...prev,{title,description,id:prev.length,completed:false}])
                 })
             }}>Create Todo</button>
         </div>

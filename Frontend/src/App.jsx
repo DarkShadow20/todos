@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import CompletedTodo from './components/CompletedTodo'
 import CreateTodo from './components/CreateTodo'
 import FetchTodo from './components/FetchTodo'
 
@@ -21,7 +22,7 @@ function App() {
           <FetchTodo todos={todos}></FetchTodo>
         </div>
         <div>
-          
+          <CompletedTodo todos={todos}></CompletedTodo>
         </div>
       </div>
     </>

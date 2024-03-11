@@ -21,7 +21,7 @@ function App() {
           <CreateTodo setTodos={setTodos}></CreateTodo>
         </div>
         <div>
-          <FetchTodo todos={todos} setCompletedTodos={setCompletedTodos}></FetchTodo>
+          <FetchTodo todos={todos} setCompletedTodos={setCompletedTodos} setTodos={setTodos}></FetchTodo>
         </div>
         <div>
           <CompletedTodo todos={completedTodos} ></CompletedTodo>

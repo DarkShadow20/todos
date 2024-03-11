@@ -1,7 +1,6 @@
 
 
 export default function CompletedTodo({todos}){
-    console.log(todos)
     let counter = 0;
     for(let i = 0;i<todos.length;i++){
         if(!todos[i].completed){
